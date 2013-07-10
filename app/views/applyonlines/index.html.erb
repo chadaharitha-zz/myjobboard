@@ -1,0 +1,17 @@
+
+
+<%= form_tag("/applyonlines/applyfinish", method: "post") do %>
+     <%= hidden_field_tag 'jobdid',  params["jobDID"]  %>
+     <%= hidden_field_tag 'key',  params["key"]  %>
+ 
+ Fill in the Job application details for : <strong><%= params["key"] %> </strong></br>   </br>   
+
+
+    <% @AppForm.ResponseBlankApplication.BlankApplication.Questions.Question.each do |q| %>
+        <%= label_tag q.QuestionID, q.QuestionText %>
+        <%= text_field_tag(q.QuestionID, nil, :placeholder => q.QuestionText[0, 20]) %></br></br>
+    <% end %>
+
+    </br></br>
+    <%= submit_tag("Submit Application") %>
+<% end %>

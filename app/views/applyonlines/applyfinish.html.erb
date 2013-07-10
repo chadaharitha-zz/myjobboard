@@ -1,0 +1,9 @@
+
+
+
+ <% if @AppFinish.ResponseApplication.ApplicationStatus == 'Complete (Test)' %>
+  Thanks for Applying for the Job " <%= @ApplyJobTitle %>"  Successfully. our Employer will contact you soon
+ <% else %>
+   Sorry the job you tried to apply has some problem. Customer care will contact you soon
+
+ <% end %>

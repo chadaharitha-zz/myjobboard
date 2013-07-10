@@ -1,0 +1,87 @@
+<div class="searchresults">
+	  <center>
+		<div id="cbBody" style="width:1000px; border:1px solid #c7c7c7">
+		  <div id="cbHeader" class="cbHeader">
+		  	<div id="cbLogo" style="text-align:left;">		  		
+		  		<img id="imgLogo" src="http://img.icbdr.com/images/UK/JS/HP10/cb-logo.png"/>
+		  	</div>
+
+			<div class="searchBox" >
+			  <%= form_tag("/job_results/index/1", method:"Post") do %>
+			  <div style="width:650px;">
+			      <h3 >Search: &nbsp;</h3>
+			      <%= text_field_tag(:keyword, nil, :placeholder => "Keyword") %>
+			      <%= text_field_tag(:location, nil, :placeholder => "location") %>			     
+			      <%= submit_tag("Find Jobs", style: "height:28px;margin-top:-12px;") %>
+			      </div>
+			  <% end %>
+			</div>
+
+
+		  </div>
+		    <% unless @results.blank? %>
+		  <div id="cbContent" class="cbContent">
+		  	<div style="width:650px;">
+			  	
+
+				<div id="pagingTop" class="navigation">
+				  	<div id="pagingTextT" > Page <span id="currPageT"><%= request.env['REQUEST_URI'].split('/')[5] %></span> of <span id="totPagesT"><%= @results["ResponseJobSearch"]["TotalPages"] %></span>
+				  		<% if request.env['REQUEST_URI'].split('/')[5].to_i > 1 %>				  			
+      						<%=link_to image_tag("http://img.icbdr.com/images/jobresults/previousV2.gif"),index_path(request.env['REQUEST_URI'].split('/')[5].to_i-1) %>
+     					<% end %>
+				  		<% if request.env['REQUEST_URI'].split('/')[5].to_i < @results["ResponseJobSearch"]["TotalPages"].to_i %>
+      						<%=link_to image_tag("http://img.icbdr.com/images/jobresults/nextV2.gif"),index_path(request.env['REQUEST_URI'].split('/')[5].to_i+1) %>
+     					<% end %>
+				  	</div>
+			  	</div>
+
+
+
+			  	<div id="jobResults" class="jobResults">
+					<% unless @results.blank? %>
+					<% if @results.ResponseJobSearch.TotalCount == 0 %>
+					There are no jobs to display
+					<% else %>
+					<% @results.ResponseJobSearch.Results.JobSearchResult.each do |res| %>
+					<div class="jobItem" >					
+						<span><%= link_to res.JobTitle, job_detail_view_path(:jobDID => res.DID),:class => "jobTitle" %></span>
+						<span class="jobDate">Posted on: <%= res.PostedDate %></span>
+						<br>                  
+						<span class="jobLocation">Location: <%= res.Location %></span>
+						<span class="jobType"> | Type: <%= res.EmploymentType %></span>
+						<span class="jobPay"><% if res.Pay == "N/A" %> <% else %> | Pay: <%= res.Pay %> <% end %></span>
+						<br>
+						<%= res.Company %>
+						<br>
+						<%= res.DescriptionTeaser %>
+						<br>
+					</div>
+					<br>
+					<% end %>
+					<% end %>
+					<% end %>
+			  	</div>
+
+
+
+				<div id="pagingBottom" class="navigation">
+				  	<div id="pagingTextB" > Page <span id="currPageB"><%= request.env['REQUEST_URI'].split('/')[5] %></span> of <span id="totPagesB"><%= @results["ResponseJobSearch"]["TotalPages"] %></span>
+				  		<% if request.env['REQUEST_URI'].split('/')[5].to_i > 1 %>				  			
+      						<%=link_to image_tag("http://img.icbdr.com/images/jobresults/previousV2.gif"),index_path(request.env['REQUEST_URI'].split('/')[5].to_i-1) %>
+     					<% end %>
+				  		<% if request.env['REQUEST_URI'].split('/')[5].to_i < @results["ResponseJobSearch"]["TotalPages"].to_i %>
+      						<%=link_to image_tag("http://img.icbdr.com/images/jobresults/nextV2.gif"),index_path(request.env['REQUEST_URI'].split('/')[5].to_i+1) %>
+     					<% end %>
+				  	</div>
+			  	</div>
+			  
+		  	</div>
+		  </div>
+		    <% end %>
+		  <div id="cbFooter" class="cbFooter">
+		  	
+		  </div>
+		</div>
+	</center>
+
+</div>

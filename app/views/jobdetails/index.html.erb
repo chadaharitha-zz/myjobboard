@@ -1,0 +1,44 @@
+
+
+<div class="jobDetails">
+
+	<div class="jobDetTop">
+
+	</div>
+
+	<div></div>
+	<% @detail = @jobdetail.ResponseJob.Job %>
+	<div>
+	<span class="Title"><%= raw @detail.JobTitle %> | </span>
+	<span class="Location">Location: <%= @detail.LocationFormatted %></span></div></br>
+	<span class="Company">Company: <%= @detail.Company %></span></br>
+	<span class="Category">Categories: <%= @detail.Categories %></span></br>
+	<span class="Exp">Experience: <%= @detail.ExperienceRequired %></span></br></br>
+
+	<b>Contact Information:</b> </br>
+
+	Name: <%= @detail.ContactInfoName %></br>
+	Phone: <%= @detail.ContactInfoPhone %></br>
+	<% if @detail.ContactInfoFax != "" %> 
+	Fax:<%= @detail.ContactInfoName %>
+	<% end %></br>
+
+	<div class="jobDescHeader">Description</div>
+	<div class="jobDesc">
+	<%= raw (CGI.unescapeHTML(@detail.JobDescription.to_s())) %>
+	</div>
+	<br>
+	<div>
+	<% if @detail.ExternalApplication == 'True' %>
+	    <%= link_to "External Apply>>",
+	                'https://www.careerbuilder.co.uk/ApplyOnline/ExternalApply.aspx?useframes=True&Job_DID='.to_s() + @detail.DID,
+	                :target => "_blank",
+	                :id => "externalLink",
+	                :class => "applyButton" %>
+	<% else %>
+	    <%= link_to "Internal Apply>>", job_apply_view_path(:jobDID => @detail.DID,:key => @detail.JobTitle),
+	                :id => 'internalLink',
+	                :class => "applyButton" %>
+	<% end %>
+</div>
+</div>

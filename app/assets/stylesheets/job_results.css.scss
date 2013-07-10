@@ -1,0 +1,23 @@
+// Place all the styles related to the JobResults controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cbHeader {padding: 10px}
+.searchBox { margin-top:10px; padding:20px; background: none repeat scroll 0 0 #2C4FA3; box-shadow: 0 10px 5px #C7C7C7}
+.searchBox h3{float:left; margin-top: 0px; color: #ffffff;}
+
+.cbContent {padding: 10px}
+
+.jobResults {text-align:left;}
+.jobItem {font-size: 12px; padding : 10px; border: 1px solid #c7c7c7; }
+.jobItem:hover {font-size: 12px; padding : 10px; border: 1px solid #c7c7c7; box-shadow: 5px 5px 5px #C7C7C7}
+.jobTitle {color: #FF7700; font-size: 14px; font-weight: bold; text-decoration: none;background:none}
+.jobTitle:hover {color: #FF7700; font-size: 14px; font-weight: bold; text-decoration: underline;background:none}
+.jobDate {color: #626264; font-size: 10px; padding-left: 10px}
+.jobLocation {color: #1FA00E;}
+.jobType {color: #305F92;}
+.jobPay {color: #305F92;}
+
+.navigation {text-align:right;padding: 10px;}
+
+.cbFooter {padding: 10px}

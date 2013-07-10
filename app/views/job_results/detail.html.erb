@@ -1,0 +1,48 @@
+
+
+<% @detail = @jobdetail.ResponseJob.Job %>
+
+<%= raw "<strong>" + @detail.JobTitle + "</strong>" %></br></br>
+
+Location: <%= @detail.LocationFormatted %></br>
+Company: <%= @detail.Company %></br>
+Categories: <%= @detail.Categories %></br>
+Experience: <%= @detail.ExperienceRequired %></br></br>
+
+<b>Contact Information:</b> </br>
+
+Name: <%= @detail.ContactInfoName %></br>
+Phone: <%= @detail.ContactInfoPhone %></br>
+<% if @detail.ContactInfoFax != "" %> 
+Fax:<%= @detail.ContactInfoName %>
+<% end %></br>
+
+<%= raw (CGI.unescapeHTML(@detail.JobDescription.to_s())) %>
+
+<br>
+<% if @detail.ExternalApplication == 'True' %>
+    <%= link_to "External Apply>>",
+                'https://www.careerbuilder.co.uk/ApplyOnline/ExternalApply.aspx?useframes=True&Job_DID='.to_s() + @job.DID,
+                :target => "_blank",
+                :id => "externalLink",
+                :class => "btn applyBtn" %>
+<% else %>
+    <%= link_to "Internal Apply>>", job_apply_view_path(:jobDID => @job.DID),
+                :id => 'internalLink',
+                :class => "btn applyBtn" %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+// Place all the styles related to the jobdetails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jobDetails {font-size: 12px;}
+
+.Title {color: #FF7700; font-weight: bold; float: left; font-size: 20px; padding: 5px}
+.Location {color: #375FBF; font-size: 18px}
+.Company {color: #707175; font-size: 18px}
+.Category {}
+.jobExp {}
+
+
+.jobDescHeader {border: 1px soild #c7c7c7; padding: 10px 10px 10px 0px; font-weight: bold}
+.jobDesc {text-align:left}
+
+
+.applyButton {background: url("http://img.icbdr.com/images/UK/JS/HP10/apply.gif") repeat-x scroll left bottom #FD892E !important;
+    border: 2px solid #FBA166;
+    font-size: 17px !important; font-weight: bold; text-decoration: none;
+    line-height: 27px; color:#ffffff; padding:2px;}
+
+.applyButton:hover{background: url("http://img.icbdr.com/images/UK/JS/HP10/apply.gif") repeat-x scroll left bottom #FD892E !important;
+    border: 2px solid #FBA166;
+    font-size: 17px !important; font-weight: bold; text-decoration: none;
+    line-height: 27px; color:#ffffff; padding:2px;}
